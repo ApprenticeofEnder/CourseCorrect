@@ -24,14 +24,22 @@ public class Hub implements Named{
   }
 
   /**
-   * Handles the menu for an instance of a hub
-   * @return true if user wishes to exit program, false if they wish to just go back
+   * Handles the menu for a Hub instance
+   * @return True if user wishes to exit program, false if they wish to just go back
    */
-  public boolean menu(){
+  public boolean menu(IOController controller){
     boolean exitAll = false;
     boolean exit = false;
     while(!exitAll && !exit){
-      
+      ArrayList<Named> items = new ArrayList<Named>();
+      for(Course course:courses){
+        items.add((Named) course);
+      }
+      int courseCount = controller.displayMenu(items, options);
+      int optionCount = options.size();
+      int selection;
+      System.out.print(">");
+      selection = controller.selectOption(courseCount + optionCount);
     }
     return exitAll;
   }
