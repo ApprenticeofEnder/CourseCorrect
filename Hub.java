@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-public class Hub{
+public class Hub implements Named{
+  private String name;
   private ArrayList<Course> courses;
   private ArrayList<String> options;
-  private String name;
   private final int AVG_OFFSET = 0;
   private final int ADD_OFFSET = 1;
   private final int REMOVE_OFFSET = 2;
@@ -31,14 +31,9 @@ public class Hub{
     boolean exitAll = false;
     boolean exit = false;
     while(!exitAll && !exit){
-      int i,j;
-      for(i = 0; i < courses.size(); i++){
-        System.out.println(String.format("%d. %s", i, courses.get(i).toString()));
-      }
-      for(j = 0; j < options.size(); j++){
-        System.out.println(String.format("%d. %s", i+j, options.get(j).toString()));
-      }
+      
     }
+    return exitAll;
   }
 
   public String toString(){
