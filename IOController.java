@@ -21,7 +21,7 @@ public class IOController{
 
   /**
    * Saves the CourseCorrect instance to a file
-   * @return true if successful, false otherwise
+   * @return True if successful, false otherwise
    */
   public boolean save(){
     return false;
@@ -29,7 +29,7 @@ public class IOController{
 
   /**
    * Loads the CourseCorrect instance from a file
-   * @return a CourseCorrect instance
+   * @return A CourseCorrect instance
    */
   public CourseCorrect load(){
     return null;
@@ -37,7 +37,8 @@ public class IOController{
 
   /**
    * handles user input for selecting a number from [0,max)
-   * @return the selected number
+   * @param max The exclusive upper bound of the selection
+   * @return The selected number
    */
   public int selectOption(int max){
     Scanner input = new Scanner(System.in);
@@ -56,6 +57,13 @@ public class IOController{
     return selection;
   }
 
+  /**
+   * Displays a menu for a selection-based component (user menu, hub, course)
+   * and keeps track of the number of selections that aren't options
+   * @param items The entries that aren't options
+   * @param options The options one has with the entries
+   * @return The number of options in items
+   */
   public int displayMenu(ArrayList<Named> items, ArrayList<String> options){
     int i;
     for(i = 0; i < items.size(); i++){
@@ -67,8 +75,25 @@ public class IOController{
     return i;
   }
 
+  /**
+   * Prompts the user for an item name and gives it to the calling method
+   * @return: The name entered
+   */
   public String enterName(){
     Scanner input = new Scanner(System.in);
-    
+    System.out.println("Enter a name for the item (no spaces).");
+    System.out.print(">");
+    return input.next();
+  }
+
+  /**
+   * Prints a line break. Mostly for formatting.
+   */
+  public void lineBreak(){
+    StringBuilder line = new StringBuilder();
+    for(int i = 0; i < 30; i++){
+      line.append("-");
+    }
+    System.out.println(line.toString());
   }
 }
