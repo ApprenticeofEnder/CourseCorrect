@@ -1,9 +1,11 @@
 import java.io.ObjectInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStrem;
+import java.io.ObjectOutputStream;
 import java.io.FileOutputStream;
 import java.util.Scanner;
+import java.util.InputMismatchException;
+import java.util.ArrayList;
 
 public class IOController{
 
@@ -11,9 +13,10 @@ public class IOController{
   private String filename;
   private CourseCorrect model;
 
-  public IOController(String username){
+  public IOController(String username, CourseCorrect model){
     this.username = username;
     this.filename = String.format("%s.txt",username);
+    this.model = model;
   }
 
   /**
@@ -21,7 +24,7 @@ public class IOController{
    * @return true if successful, false otherwise
    */
   public boolean save(){
-
+    return false;
   }
 
   /**
@@ -29,7 +32,7 @@ public class IOController{
    * @return a CourseCorrect instance
    */
   public CourseCorrect load(){
-
+    return null;
   }
 
   /**
@@ -37,6 +40,35 @@ public class IOController{
    * @return the selected number
    */
   public int selectOption(int max){
+    Scanner input = new Scanner(System.in);
+    int selection = -1;
+    while(selection < 0 || selection >= max){
+      input = new Scanner(System.in);
+      try{
+        selection = input.nextInt();
+        if(selection < 0 || selection >= max) System.out.print("Invalid selection.\n>");
+      }
+      catch(InputMismatchException e){
+        System.out.print("Invalid selection.\n>");
+        continue;
+      }
+    }
+    return selection;
+  }
+
+  public int displayMenu(ArrayList<Named> items, ArrayList<String> options){
+    int i;
+    for(i = 0; i < items.size(); i++){
+      System.out.println(String.format("%d. %s", i, items.get(i).toString()));
+    }
+    for(int j = 0; j < options.size(); j++){
+      System.out.println(String.format("%d. %s", i+j, options.get(j)));
+    }
+    return i;
+  }
+
+  public String enterName(){
+    Scanner input = new Scanner(System.in);
     
   }
 }
