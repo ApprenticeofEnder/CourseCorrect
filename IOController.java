@@ -72,7 +72,16 @@ public class IOController{
     for(int j = 0; j < options.size(); j++){
       System.out.println(String.format("%d. %s", i+j, options.get(j)));
     }
+    System.out.print(">");
     return i;
+  }
+
+  public void removeMenu(ArrayList<Named> items){
+    System.out.println("Select an item to remove:")
+    for (int i = 0; i < items.size(); i++){
+      System.out.println(String.format("%d. %s", i, items.get(i).toString()));
+    }
+    System.out.print(">");
   }
 
   /**

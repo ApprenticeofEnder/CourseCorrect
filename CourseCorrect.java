@@ -37,7 +37,6 @@ public class CourseCorrect{
       int hubCount = controller.displayMenu(items, options);
       int optionCount = options.size();
       int selection;
-      System.out.print(">");
       selection = controller.selectOption(hubCount + optionCount);
       switch(selection - hubCount){
         case AVG_OFFSET:
@@ -66,6 +65,14 @@ public class CourseCorrect{
     String hubName = controller.enterName();
     Hub newHub = new Hub(hubName);
     hubs.add(newHub);
+  }
+
+  public boolean removeHub(IOController controller){
+    ArrayList<Named> items = new ArrayList<Named>();
+    for(Hub hub:hubs){
+      items.add((Named) hub);
+    }
+    controller.removeMenu(items);
   }
 
   /**
