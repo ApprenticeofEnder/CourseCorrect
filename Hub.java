@@ -38,7 +38,6 @@ public class Hub implements Named{
       int courseCount = controller.displayMenu(items, options);
       int optionCount = options.size();
       int selection;
-      System.out.print(">");
       selection = controller.selectOption(courseCount + optionCount);
     }
     return exitAll;

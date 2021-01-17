@@ -73,10 +73,10 @@ public class CourseCorrect{
       items.add((Named) hub);
     }
     controller.removeMenu(items);
-
+    return false;
   }
 
-  public boolean removeByIndex(int index){
+  public void removeByIndex(int index){
     hubs.remove(index);
   }
 
