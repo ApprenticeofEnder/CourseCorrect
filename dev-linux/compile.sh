@@ -1,0 +1,2 @@
+#! bash
+javac *.java

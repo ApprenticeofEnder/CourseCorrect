@@ -77,7 +77,7 @@ public class IOController{
   }
 
   public void removeMenu(ArrayList<Named> items){
-    System.out.println("Select an item to remove:")
+    System.out.println("Select an item to remove:");
     for (int i = 0; i < items.size(); i++){
       System.out.println(String.format("%d. %s", i, items.get(i).toString()));
     }
