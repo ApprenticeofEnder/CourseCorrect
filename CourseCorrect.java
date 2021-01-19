@@ -60,9 +60,13 @@ public class CourseCorrect{
 
   /**
    * Adds a new hub to the user's set of hubs
+   * @param controller The program's IO Controller
    */
   public void addHub(IOController controller){
     String hubName = controller.enterName();
+    if(hubName.toUpperCase().equals("CANCEL")){
+      return;
+    }
     Hub newHub = new Hub(hubName);
     hubs.add(newHub);
   }
@@ -73,11 +77,24 @@ public class CourseCorrect{
       items.add((Named) hub);
     }
     controller.removeMenu(items);
-
+    int selection = controller.selectOption(hubs.size()+1);
+    if(selection == hubs.size()){
+      return false;
+    }
+    if(confirmSelection()){
+      return removeByIndex(selection);
+    }
+    return false;
   }
 
   public boolean removeByIndex(int index){
-    hubs.remove(index);
+    try{
+      hubs.remove(index);
+      return true;
+    }
+    catch (Exception e){
+      return false;
+    }
   }
 
   /**

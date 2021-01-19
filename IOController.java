@@ -81,6 +81,7 @@ public class IOController{
     for (int i = 0; i < items.size(); i++){
       System.out.println(String.format("%d. %s", i, items.get(i).toString()));
     }
+    System.out.println(String.format("%d. Cancel", items.size()));
     System.out.print(">");
   }
 
@@ -90,9 +91,16 @@ public class IOController{
    */
   public String enterName(){
     Scanner input = new Scanner(System.in);
-    System.out.println("Enter a name for the item (no spaces).");
+    System.out.println("Enter a name for the item (no spaces). Enter \"cancel\" to cancel.");
     System.out.print(">");
     return input.next();
+  }
+
+  public boolean confirmSelection(){
+    Scanner input = new Scanner(System.in);
+    System.out.println("Are you sure? (y/n)");
+    System.out.print(">");
+    return input.next().toUpperCase().equals("Y");
   }
 
   /**
